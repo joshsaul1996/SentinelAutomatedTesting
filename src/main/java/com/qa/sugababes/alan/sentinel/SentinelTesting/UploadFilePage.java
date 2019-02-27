@@ -1,5 +1,11 @@
 package com.qa.sugababes.alan.sentinel.SentinelTesting;
 
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -22,26 +28,25 @@ public class UploadFilePage {
 	
 	
 	
-	public void InputReportTitle(WebDriver driver, String text) {
-		WebElement selectFileFieldClick = (new WebDriverWait(driver,10))
-				.until(ExpectedConditions.elementToBeClickable(reportTitle));
-		selectFileFieldClick.click();
-		reportTitle.sendKeys(text);
+	public void InputReportTitle() {
+		reportTitle.click();
+		reportTitle.sendKeys("First Report");
 	}
 	
 	public void ClickBrowseButton() {
 		browseButton.click();
 	}
 	
-	public String FileNameResult(WebDriver driver) {
-		WebElement FileNameResult = (new WebDriverWait(driver,10))
-				.until(ExpectedConditions.elementToBeClickable(fileName));
-		return FileNameResult.getText(); 
+	public String FileNameResult() {
+		return fileName.getText(); 
 	}
 	
 	public void ClickSubmitButton() {
 		submitButton.click();
 	}
 	
-
+	public void robotUploadFile() {
+		UploadFileRobot uploadFile = new UploadFileRobot();
+		uploadFile.uploadFile();
+	}
 }

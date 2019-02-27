@@ -5,18 +5,17 @@ Feature: Input documents to the website
 
 Scenario: Selecting a file
 Given I have the correct web address
-When I select a file
-Then the file has been selected
+And Have entered a report name
+When I click Choose File button
+And Click on a file pressing enter
+Then the file has been selected 
+And the file has been checked
 
 
 Scenario: Uploading a file
-Given I have selected a file
-When I click submit
-Then the file type is checked
-And a submission message is displayed 
- 
-Scenario: Submit no document
 Given I have the correct web address
-And the file has not been selected
+And Have entered a report name
+And I have selected a file
 When I click submit
-Then an error message appears
+Then a submission message is displayed 
+ 
