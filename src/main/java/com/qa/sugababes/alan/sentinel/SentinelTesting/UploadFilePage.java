@@ -1,30 +1,22 @@
 package com.qa.sugababes.alan.sentinel.SentinelTesting;
 
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
-
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UploadFilePage {
 	
-	@FindBy(xpath="//*[@id=\"searchText\"]")
+	@FindBy(xpath="//*[@id=\"ReportName\"]")
 	WebElement reportTitle;
 	
-	@FindBy(xpath= "browseButton")
-	WebElement browseButton;
+	@FindBy(xpath= "//*[@id=\"fileUpload\"]")
+	WebElement chooseFile;
 	
-	@FindBy(xpath = "//*[@id=\"contentRow\"]/div[1]/div/a[2]")
-	WebElement fileName;
 					
-	@FindBy(xpath = "//*[@id=\"searchButton\"]")
+	@FindBy(xpath = "//*[@id=\"submitButton\"]")
 	WebElement submitButton;
+	
+	@FindBy(xpath = "//*[@id=\"root\"]/div/div/nav/div/div/p/text([2])")
+	WebElement submitMessage;
 	
 	
 	
@@ -33,12 +25,12 @@ public class UploadFilePage {
 		reportTitle.sendKeys("First Report");
 	}
 	
-	public void ClickBrowseButton() {
-		browseButton.click();
+	public void ClickChooseFileButton() {
+		chooseFile.click();
 	}
 	
 	public String FileNameResult() {
-		return fileName.getText(); 
+		return chooseFile.getText(); 
 	}
 	
 	public void ClickSubmitButton() {
@@ -49,4 +41,9 @@ public class UploadFilePage {
 		UploadFileRobot uploadFile = new UploadFileRobot();
 		uploadFile.uploadFile();
 	}
+	
+	public String SubmitMessageResult() {
+		return submitMessage.getText(); 
+	}
+	
 }
